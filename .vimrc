@@ -76,6 +76,11 @@ set viminfo='100,<9999,s100
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 
-" Automatically save and load folds
-autocmd BufWinLeave *.* mkview
-autocmd BufWinEnter *.* silent loadview"
+"FOLDS:
+"------
+" Automatically save folds
+augroup AutoSaveFolds
+  autocmd!
+  au BufWinLeave ?* mkview 1
+  au BufWinEnter ?* silent loadview 1
+augroup END
